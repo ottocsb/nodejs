@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>chat-socket</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+<div id="app">
+
+    <label>
+        <input placeholder="Please enter a message." style="display: inline-block; width: 200px" v-model="msg"/>
+    </label>
+    <button @click="sendMsg">confirm</button>
+    <div>
+        <list :key="item.id" style="width: 200px" v-for="item in state.list">
+            <div>{{ item }}</div>
+        </list>
+    </div>
+</div>
+<script type="module">
+    const {createApp, ref, reactive} = Vue
+    import {useWebSocket} from './websocket.js'
+
+    createApp({
+        setup() {
+
+            const msg = ref('')
+            const state = reactive({
+                msg: '',
+                list: [],
+            })
+            const handelMessage = (msg) => {
+                console.log(msg)
+                let data = JSON.parse(msg.data)
+                state.list.push(data)
+            }
+            const ws = useWebSocket(handelMessage)
+            const sendMsg = () => {
+                const _msg = msg.value
+                ws.send(
+                    JSON.stringify({
+                        msg: _msg,
+                        time: new Date().getTime(),
+                        id: Math.floor(Math.random() * 100),
+                    })
+                )
+                msg.value = ''
+            }
+            return {msg, sendMsg, state}
+        }
+    }).mount('#app')
+</script>
+</body>
+</html>

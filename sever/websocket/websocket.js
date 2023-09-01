@@ -1,4 +1,4 @@
-const url = 'ws://172.21.19.241:4567/'
+const url = 'ws://127.0.0.1:4567/'
 
 export function useWebSocket(handleMessage) {
 	const init = () => {
