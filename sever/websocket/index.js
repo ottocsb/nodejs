@@ -3,6 +3,7 @@ const WebSocket = require('ws')
 ;((ws) => {
 	const server = new ws.Server({port: 4567})
 	const init = () => {
+		console.log('init')
 		bindEvent()
 	}
 

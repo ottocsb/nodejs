@@ -2,11 +2,14 @@
   "name": "reptile",
   "version": "1.0.0",
   "packageManager": "pnpm@8.5.1",
+  "scripts": {
+    "startSocket": "node sever/websocket/index.js"
+  },
   "dependencies": {
-    "axios": "^1.5.0",
-    "ws": "8.13.0",
+    "axios": "^1.6.8",
+    "ws": "8.16.0",
     "cheerio": "^1.0.0-rc.12",
-    "puppeteer": "^21.1.1",
-    "xlsx": "https://cdn.sheetjs.com/xlsx-0.19.3/xlsx-0.19.3.tgz"
+    "puppeteer": "^22.6.1",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz"
   }
 }

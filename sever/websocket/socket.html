@@ -7,7 +7,6 @@
 </head>
 <body>
 <div id="app">
-
     <label>
         <input placeholder="Please enter a message." style="display: inline-block; width: 200px" v-model="msg"/>
     </label>
@@ -24,7 +23,6 @@
 
     createApp({
         setup() {
-
             const msg = ref('')
             const state = reactive({
                 msg: '',
